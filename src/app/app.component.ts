@@ -1,6 +1,6 @@
 import { Component, computed, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
 
-import {interval, map} from 'rxjs';
+// import {interval, map} from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop'
 
 @Component({
@@ -39,10 +39,11 @@ ngOnInit(): void {
     //   subscribtion.unsubscribe();
     // });
     const subscription = this.clickCount$.subscribe({
-      next: (val) => console.log(`Click button ${this.clickCount()} times.`)
+      next: (val: number) => console.log(`Click button ${this.clickCount()} times.`),
     });
-        this.destroyRef.onDestroy(() => {
-          subscription.unsubscribe();
+  
+    this.destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
     });
 }
 
